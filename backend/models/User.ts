@@ -45,7 +45,10 @@ const UserSchema = new mongoose.Schema<UserFields, UserModel, UserMethods>(
       required: true,
     },
     googleID: String,
-    avatar: String,
+    avatar: {
+      type: String,
+      required: true,
+    },
   },
   {
     versionKey: false,
