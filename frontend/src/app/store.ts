@@ -11,7 +11,7 @@ import {
 } from "redux-persist";
 import persistStore from "redux-persist/es/persistStore";
 import { usersReducer } from "../features/users/usersSlice";
-
+import { cocktailsReducer } from "../features/cocktails/cocktailsSlice";
 
 const usersPersistConfig = {
   key: "store:users",
@@ -21,6 +21,7 @@ const usersPersistConfig = {
 
 const rootReducer = combineReducers({
   users: persistReducer(usersPersistConfig, usersReducer),
+  cocktails: cocktailsReducer,
 });
 
 export const store = configureStore({

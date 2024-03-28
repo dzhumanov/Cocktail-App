@@ -39,3 +39,19 @@ export interface LoginMutation {
   email: string;
   password: string;
 }
+
+export interface Ingredient {
+  name: string;
+  amount: string;
+}
+
+export interface Cocktail {
+  _id: string;
+  user: string;
+  name: string;
+  image: string;
+  recipe: string;
+  isPublished: boolean;
+  ingredients: Ingredient[]
+}
+
