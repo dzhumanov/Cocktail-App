@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { selectCocktails } from "./cocktailsSlice";
 import { useEffect } from "react";
 import { fetchCocktails } from "./cocktailsThunk";
-import OneCocktail from "./components/OneCocktail";
+import CocktailItem from "./components/CocktailItem";
 
 const Cocktails = () => {
   const dispatch = useAppDispatch();
@@ -11,7 +11,7 @@ const Cocktails = () => {
 
   useEffect(() => {
     dispatch(fetchCocktails());
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <Typography variant="h2" sx={{ textAlign: "center", fontWeight: "bold" }}>
@@ -19,7 +19,7 @@ const Cocktails = () => {
       </Typography>
       <Grid item container spacing={2}>
         {cocktails.map((cocktail) => (
-          <OneCocktail key={cocktail._id} cocktail={cocktail} />
+          <CocktailItem key={cocktail._id} cocktail={cocktail} />
         ))}
       </Grid>
     </>

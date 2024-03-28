@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Register from "./features/users/Register";
 import { Login } from "@mui/icons-material";
 import Cocktails from "./features/cocktails/Cocktails";
+import OneCocktail from "./features/cocktails/components/OneCocktail";
 
 function App() {
   const user = useAppSelector(selectUser);
@@ -23,6 +24,7 @@ function App() {
             <Route path="/login" element={<Login />} />
 
             <Route path="/" element={<Cocktails />} />
+            <Route path="/cocktails/:id" element={<OneCocktail />} />
 
             <Route path="*" element={<h1>Not found</h1>} />
           </Routes>
