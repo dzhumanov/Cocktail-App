@@ -49,12 +49,14 @@ cocktailsRouter.post(
   imageUpload.single("image"),
   async (req: RequestWithUser, res, next) => {
     try {
+      const ingredients = JSON.parse(req.body.ingredients);
+
       const cocktailData = {
         user: req.user?._id,
         name: req.body.name,
         image: req.file ? req.file.filename : null,
         recipe: req.body.recipe,
-        ingredients: req.body.ingredients,
+        ingredients: ingredients,
       };
 
       const cocktail = new Cocktail(cocktailData);

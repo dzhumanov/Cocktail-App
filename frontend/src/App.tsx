@@ -4,9 +4,11 @@ import { selectUser } from "./features/users/usersSlice";
 import AppToolbar from "./components/UI/AppToolbar/AppToolbar";
 import { Route, Routes } from "react-router-dom";
 import Register from "./features/users/Register";
-import { Login } from "@mui/icons-material";
 import Cocktails from "./features/cocktails/Cocktails";
 import OneCocktail from "./features/cocktails/components/OneCocktail";
+import Login from "./features/users/Login";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import CreateCocktail from "./features/cocktails/CreateCocktail";
 
 function App() {
   const user = useAppSelector(selectUser);
@@ -25,6 +27,19 @@ function App() {
 
             <Route path="/" element={<Cocktails />} />
             <Route path="/cocktails/:id" element={<OneCocktail />} />
+
+            <Route
+              path="/cocktails/create"
+              element={
+                <ProtectedRoute
+                  isAllowed={
+                    (user && user.role === "admin") || user?.role === "user"
+                  }
+                >
+                  <CreateCocktail />
+                </ProtectedRoute>
+              }
+            />
 
             <Route path="*" element={<h1>Not found</h1>} />
           </Routes>

@@ -5,6 +5,7 @@ export interface User {
   token: string;
   displayName: string;
   avatar: string;
+  googleID?: string;
 }
 
 export interface ValidationError {
@@ -46,6 +47,11 @@ export interface Ingredient {
   amount: string;
 }
 
+export interface IngredientMutation {
+  name: string;
+  amount: string;
+}
+
 export interface Cocktail {
   _id: string;
   user: string;
@@ -53,6 +59,12 @@ export interface Cocktail {
   image: string;
   recipe: string;
   isPublished: boolean;
-  ingredients: Ingredient[]
+  ingredients: Ingredient[];
 }
 
+export interface CocktailMutation {
+  name: string;
+  image: File | null;
+  recipe: string;
+  ingredients: IngredientMutation[];
+}

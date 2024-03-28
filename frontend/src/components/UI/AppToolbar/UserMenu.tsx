@@ -41,9 +41,17 @@ const UserMenu: React.FC<Props> = ({ user }) => {
     dispatch(logout());
   };
 
+  let avatar;
+
+  if (!user.googleID) {
+    avatar = apiURL + "/" + user.avatar;
+  } else {
+    avatar = user.avatar;
+  }
+
   return (
     <>
-      <Avatar alt={user.displayName} src={`${apiURL}/${user.avatar}`} />
+      <Avatar alt={user.displayName} src={avatar} />
       <Button onClick={handleClick} color="inherit">
         Hello, {user.displayName}
       </Button>
@@ -61,7 +69,7 @@ const UserMenu: React.FC<Props> = ({ user }) => {
         </MenuItem>
         <MenuItem>
           <Typography variant="h6" component="div" sx={{ textAlign: "center" }}>
-            <Link to="/artists/create">Post new cocktail</Link>
+            <Link to="/cocktails/create">Post new cocktail</Link>
           </Typography>
         </MenuItem>
         <MenuItem onClick={handleLogout}>Logout</MenuItem>

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { IngredientSchema } from "./Ingredient";
 
 const CocktailSchema = new mongoose.Schema(
   {
@@ -24,12 +25,7 @@ const CocktailSchema = new mongoose.Schema(
       required: true,
     },
     ingredients: {
-      type: [
-        {
-          name: String,
-          amount: String,
-        },
-      ],
+      type: [IngredientSchema],
       required: true,
     },
   },

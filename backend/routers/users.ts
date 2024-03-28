@@ -8,7 +8,7 @@ import { OAuth2Client } from "google-auth-library";
 const userRouter = express.Router();
 const client = new OAuth2Client(config.google.clientId);
 
-userRouter.post("/", imageUpload.single("avatar"), async (req, res, next) => {
+userRouter.post("/", imageUpload.single("image"), async (req, res, next) => {
   try {
     const user = new User({
       email: req.body.email,
