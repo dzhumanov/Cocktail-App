@@ -12,9 +12,12 @@ cocktailsRouter.get("/", async (req, res, next) => {
     let cocktails;
 
     if (req.query.user) {
-      cocktails = await Cocktail.find({ user: req.query.user });
+      cocktails = await Cocktail.find({ user: req.query.user }).populate(
+        "user",
+        "displayName"
+      );
     } else {
-      cocktails = await Cocktail.find();
+      cocktails = await Cocktail.find().populate("user", "displayName");
     }
     return res.send(cocktails);
   } catch (e) {

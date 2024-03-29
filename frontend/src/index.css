@@ -11,3 +11,8 @@
   font-weight: bold;
   font-style: normal;
 }
+
+#root,
+html {
+  background-color: rgba(236, 236, 236, 0.829);
+}

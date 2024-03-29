@@ -18,16 +18,19 @@ const Cocktails = () => {
   }, [dispatch]);
   return (
     <>
-      <Typography variant="h2" sx={{ textAlign: "center", fontWeight: "bold" }}>
+      <Typography
+        variant="h2"
+        sx={{ textAlign: "center", fontWeight: "bold", mb: "15px" }}
+      >
         Cocktails
       </Typography>
       {loading ? (
         <Preloader loading={loading} />
       ) : cocktails.length > 0 ? (
-        <Grid container spacing={2}>
+        <Grid container spacing={4} alignItems="center">
           {cocktails.map((cocktail) => {
             const isAdmin = user && user.role === "admin";
-            const isOwner = user && cocktail.user === user._id;
+            const isOwner = user && cocktail.user._id === user._id;
             const shouldDisplay = cocktail.isPublished || isAdmin || isOwner;
             return shouldDisplay ? (
               <CocktailItem key={cocktail._id} cocktail={cocktail} />

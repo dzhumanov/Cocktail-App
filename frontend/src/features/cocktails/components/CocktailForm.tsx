@@ -72,6 +72,16 @@ const CocktailForm: React.FC<Props> = ({ onSubmit }) => {
             onChange={inputChangeHandler}
             name="name"
             required
+            InputProps={{
+              sx: {
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#F86060",
+                },
+                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#F86060",
+                },
+              },
+            }}
           />
         </Grid>
 
@@ -85,6 +95,16 @@ const CocktailForm: React.FC<Props> = ({ onSubmit }) => {
             onChange={inputChangeHandler}
             name="recipe"
             required
+            InputProps={{
+              sx: {
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#F86060",
+                },
+                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#F86060",
+                },
+              },
+            }}
           />
         </Grid>
 
@@ -97,27 +117,68 @@ const CocktailForm: React.FC<Props> = ({ onSubmit }) => {
         </Grid>
 
         <Grid item xs>
-          <Button color="primary" variant="contained" onClick={addIngredient}>
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={addIngredient}
+            sx={{
+              mb: "15px",
+              bgcolor: "#F86060",
+              color: "#fff",
+              "&:hover": {
+                bgcolor: "#fff",
+                color: "#000",
+              },
+              "&:active": {
+                bgcolor: "#000",
+                color: "#fff",
+              },
+            }}
+          >
             Add new ingredient
           </Button>
           {state.ingredients.map((ingredient, index) => (
-            <Grid item key={index}>
-              <TextField
-                id={`ingredient-name-${index}`}
-                label="Ingredient name"
-                value={ingredient.name}
-                onChange={ingredientChangeHandler(index, "name")}
-                name={`ingredient-name-${index}`}
-                required
-              />
-              <TextField
-                id={`ingredient-amount-${index}`}
-                label="Amount"
-                value={ingredient.amount}
-                onChange={ingredientChangeHandler(index, "amount")}
-                name={`ingredient-amount-${index}`}
-                required
-              />
+            <Grid item container key={index} sx={{ mb: "15px" }}>
+              <Grid item xs={7}>
+                <TextField
+                  id={`ingredient-name-${index}`}
+                  label="Ingredient name"
+                  value={ingredient.name}
+                  onChange={ingredientChangeHandler(index, "name")}
+                  name={`ingredient-name-${index}`}
+                  required
+                  InputProps={{
+                    sx: {
+                      "&:hover .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#F86060",
+                      },
+                      "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#F86060",
+                      },
+                    },
+                  }}
+                />
+              </Grid>
+              <Grid item xs={4} sx={{ ml: "20px" }}>
+                <TextField
+                  id={`ingredient-amount-${index}`}
+                  label="Amount"
+                  value={ingredient.amount}
+                  onChange={ingredientChangeHandler(index, "amount")}
+                  name={`ingredient-amount-${index}`}
+                  required
+                  InputProps={{
+                    sx: {
+                      "&:hover .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#F86060",
+                      },
+                      "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#F86060",
+                      },
+                    },
+                  }}
+                />
+              </Grid>
             </Grid>
           ))}
         </Grid>
@@ -130,7 +191,7 @@ const CocktailForm: React.FC<Props> = ({ onSubmit }) => {
             sx={{
               mr: "20px",
               fontSize: "32px",
-              bgcolor: "#1976D2",
+              bgcolor: "#F86060",
               color: "#fff",
               "&:hover": {
                 bgcolor: "#fff",

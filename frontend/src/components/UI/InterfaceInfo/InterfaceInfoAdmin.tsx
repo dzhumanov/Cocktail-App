@@ -24,9 +24,8 @@ const InterfaceInfoAdmin: React.FC<Props> = ({
         color="primary"
         variant="contained"
         sx={{
-          mr: "20px",
-          fontSize: "32px",
-          bgcolor: "#1976D2",
+          ml: "20px",
+          bgcolor: "#F86060",
           color: "#fff",
           "&:hover": {
             bgcolor: "#fff",
@@ -45,9 +44,8 @@ const InterfaceInfoAdmin: React.FC<Props> = ({
         color="primary"
         variant="contained"
         sx={{
-          mr: "20px",
-          fontSize: "32px",
-          bgcolor: "red",
+          ml: "20px",
+          bgcolor: "#F86060",
           color: "#fff",
           "&:hover": {
             bgcolor: "#fff",

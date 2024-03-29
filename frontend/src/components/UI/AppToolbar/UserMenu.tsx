@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   Avatar,
   Button,
+  Grid,
   Menu,
   MenuItem,
   Typography,
@@ -51,28 +52,41 @@ const UserMenu: React.FC<Props> = ({ user }) => {
 
   return (
     <>
-      <Avatar alt={user.displayName} src={avatar} />
-      <Button onClick={handleClick} color="inherit">
-        Hello, {user.displayName}
-      </Button>
+      <Grid container alignItems="center">
+        <Avatar
+          sx={{ width: "60px", height: "60px", border: "2px solid white" }}
+          alt={user.displayName}
+          src={avatar}
+        />
+        <Button onClick={handleClick} color="inherit" sx={{ fontSize: "32px" }}>
+          Hello, {user.displayName}
+        </Button>
+      </Grid>
 
       <Menu
         anchorEl={anchorEl}
         keepMounted
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        sx={{ left: "0px" }}
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
         <MenuItem>
-          <Typography variant="h6" component="div" sx={{ textAlign: "center" }}>
+          <Typography variant="h5" component="div" sx={{ textAlign: "center" }}>
             <Link to="/cocktails/myCocktails">My cocktails</Link>
           </Typography>
         </MenuItem>
         <MenuItem>
-          <Typography variant="h6" component="div" sx={{ textAlign: "center" }}>
+          <Typography variant="h5" component="div" sx={{ textAlign: "center" }}>
             <Link to="/cocktails/create">Post new cocktail</Link>
           </Typography>
         </MenuItem>
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        <MenuItem onClick={handleLogout}>
+          <Typography variant="h5" component="div" sx={{ textAlign: "center" }}>
+            Logout
+          </Typography>
+        </MenuItem>
       </Menu>
     </>
   );

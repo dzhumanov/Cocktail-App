@@ -16,11 +16,21 @@ const Link = styled(NavLink)({
 const AppToolbar = () => {
   const user = useAppSelector(selectUser);
   return (
-    <AppBar position="sticky" sx={{ mb: 2 }}>
+    <AppBar
+      position="sticky"
+      sx={{
+        mb: 2,
+        bgcolor: "#F86060",
+        maxWidth: "80%",
+        mx: "auto",
+        borderBottomRightRadius: "30px",
+        borderBottomLeftRadius: "30px",
+      }}
+    >
       <Toolbar>
         <Grid container justifyContent="space-between" alignItems="center">
           <Typography variant="h3" component="div" sx={{ textAlign: "center" }}>
-            <Link to="/">Cocktails</Link>
+            <Link to="/">Cocktail app</Link>
           </Typography>
           <Grid item>
             {user ? <UserMenu user={user} /> : <AnonymousMenu />}

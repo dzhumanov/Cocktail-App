@@ -15,7 +15,6 @@ userRouter.post("/", imageUpload.single("image"), async (req, res, next) => {
       password: req.body.password,
       displayName: req.body.displayName,
       avatar: req.file ? req.file.filename : null,
-      role: req.body.role,
     });
     user.generateToken();
     await user.save();

@@ -52,7 +52,7 @@ const FileInput: React.FC<Props> = ({ onChange, name, label }) => {
             onClick={activateInput}
             sx={{
               mr: "20px",
-              bgcolor: "#1976D2",
+              bgcolor: "#F86060",
               color: "#fff",
               "&:hover": {
                 bgcolor: "#fff",

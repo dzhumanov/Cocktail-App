@@ -24,11 +24,11 @@ const CreateCocktail = () => {
         bgcolor: "#fff",
         pt: "30px",
         pb: "30px",
-        border: "3px solid black",
+        border: "3px solid #F86060",
         borderRadius: "10px",
       }}
     >
-      <Typography variant="h4">Post new artist</Typography>
+      <Typography variant="h3">Post new artist</Typography>
       <CocktailForm onSubmit={onFormSubmit} />
     </Container>
   );

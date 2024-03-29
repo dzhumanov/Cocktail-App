@@ -10,8 +10,8 @@ const InterfaceInfoUser: React.FC<Props> = ({ isPublished, onDelete }) => {
     <Grid item container>
       <Typography variant="h5">
         Status:{" "}
-        <span style={{ color: isPublished ? "green" : "red" }}>
-          {isPublished ? "Published" : "Not published"}
+        <span style={{ color: isPublished ? "green" : "#F86060" }}>
+          {isPublished ? "Published" : "Your cocktail is under review"}
         </span>
       </Typography>
       <Button
@@ -19,11 +19,9 @@ const InterfaceInfoUser: React.FC<Props> = ({ isPublished, onDelete }) => {
         color="primary"
         variant="contained"
         sx={{
-          mr: "20px",
-          fontSize: "32px",
-          bgcolor: "red",
+          ml: "20px",
+          bgcolor: "#F86060",
           color: "#fff",
-          width: "200px",
           "&:hover": {
             bgcolor: "#fff",
             color: "#000",
