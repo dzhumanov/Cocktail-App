@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch } from "../../../app/hooks";
 import { Container, Typography } from "@mui/material";
-import CocktailForm from "./components/CocktailForm";
-import { createCocktail } from "./cocktailsThunk";
-import { CocktailMutation } from "../../types";
+import CocktailForm from "../components/CocktailForm";
+import { createCocktail } from "../cocktailsThunk";
+import { CocktailMutation } from "../../../types";
 
 const CreateCocktail = () => {
   const dispatch = useAppDispatch();

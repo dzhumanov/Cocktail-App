@@ -9,6 +9,9 @@ const theme = createTheme({
       },
     },
   },
+  typography: {
+    fontFamily: ["PTSerif", "PTSerifBold"].join(","),
+  },
 });
 
 export default theme;

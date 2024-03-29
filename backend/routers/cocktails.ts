@@ -94,7 +94,7 @@ cocktailsRouter.patch(
 cocktailsRouter.delete(
   "/:id",
   auth,
-  permit("admin"),
+  permit("admin", "user"),
   async (req: RequestWithUser, res, next) => {
     try {
       const cocktailId = req.params.id;

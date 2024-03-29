@@ -11,6 +11,16 @@ export const fetchCocktails = createAsyncThunk<Cocktail[]>(
   }
 );
 
+export const fetchMyCocktails = createAsyncThunk<Cocktail[], string>(
+  "cocktails/fetchMy",
+  async (userId) => {
+    const response = await axiosApi.get<Cocktail[]>(
+      `/cocktails?user=${userId}`
+    );
+    return response.data;
+  }
+);
+
 export const fetchOneCocktail = createAsyncThunk<Cocktail, string>(
   "cocktails/fetchOne",
   async (cocktailId: string) => {
@@ -38,11 +48,6 @@ export const createCocktail = createAsyncThunk<
         JSON.stringify(cocktailMutation.ingredients)
       );
 
-      //   cocktailMutation.ingredients.forEach((ingredient, index) => {
-      //     formData.append(`ingredients[${index}].name`, ingredient.name);
-      //     formData.append(`ingredients[${index}].amount`, ingredient.amount);
-      //   });
-
       if (cocktailMutation.image) {
         formData.append("image", cocktailMutation.image);
       }
@@ -55,3 +60,42 @@ export const createCocktail = createAsyncThunk<
     console.error(e);
   }
 });
+
+export const toggleCocktail = createAsyncThunk<
+  void,
+  string,
+  { state: RootState }
+>("cocktails/toggle", async (cocktailId, thunkApi) => {
+  try {
+    const state = thunkApi.getState();
+    const token = state.users.user?.token;
+
+    if (token) {
+      await axiosApi.patch(`/cocktails/${cocktailId}/togglePublished`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    }
+  } catch (e) {
+    console.error(e);
+  }
+});
+
+export const deleteCocktail = createAsyncThunk<void, string, { state: RootState }>(
+  "cocktails/delete",
+  async (cocktailId: string, thunkApi) => {
+    try {
+      const state = thunkApi.getState();
+      const token = state.users.user?.token;
+
+      if (token) {
+        await axiosApi.delete(`/cocktails/${cocktailId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+);

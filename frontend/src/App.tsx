@@ -4,11 +4,12 @@ import { selectUser } from "./features/users/usersSlice";
 import AppToolbar from "./components/UI/AppToolbar/AppToolbar";
 import { Route, Routes } from "react-router-dom";
 import Register from "./features/users/Register";
-import Cocktails from "./features/cocktails/Cocktails";
+import Cocktails from "./features/cocktails/containers/Cocktails";
 import OneCocktail from "./features/cocktails/components/OneCocktail";
 import Login from "./features/users/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import CreateCocktail from "./features/cocktails/CreateCocktail";
+import CreateCocktail from "./features/cocktails/containers/CreateCocktail";
+import MyCocktails from "./features/cocktails/containers/MyCocktails";
 
 function App() {
   const user = useAppSelector(selectUser);
@@ -37,6 +38,18 @@ function App() {
                   }
                 >
                   <CreateCocktail />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/cocktails/myCocktails"
+              element={
+                <ProtectedRoute
+                  isAllowed={
+                    (user && user.role === "admin") || user?.role === "user"
+                  }
+                >
+                  <MyCocktails />
                 </ProtectedRoute>
               }
             />

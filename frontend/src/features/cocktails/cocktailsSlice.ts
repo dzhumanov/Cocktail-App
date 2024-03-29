@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Cocktail } from "../../types";
 import { RootState } from "../../app/store";
-import { fetchCocktails, fetchOneCocktail } from "./cocktailsThunk";
+import {
+  fetchCocktails,
+  fetchMyCocktails,
+  fetchOneCocktail,
+} from "./cocktailsThunk";
 
 interface CocktailsState {
   cocktails: Cocktail[];
@@ -33,6 +37,21 @@ export const cocktailsSlice = createSlice({
     builder.addCase(fetchCocktails.rejected, (state) => {
       state.fetchLoading = false;
     });
+
+    builder.addCase(fetchMyCocktails.pending, (state) => {
+      state.fetchLoading = true;
+    });
+    builder.addCase(
+      fetchMyCocktails.fulfilled,
+      (state, { payload: cocktails }) => {
+        state.fetchLoading = false;
+        state.cocktails = cocktails;
+      }
+    );
+    builder.addCase(fetchMyCocktails.rejected, (state) => {
+      state.fetchLoading = false;
+    });
+
     builder.addCase(fetchOneCocktail.pending, (state) => {
       state.fetchLoading = true;
     });
