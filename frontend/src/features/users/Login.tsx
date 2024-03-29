@@ -14,14 +14,16 @@ import {
 } from "@mui/material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { selectLoginError } from "./usersSlice";
+import { selectLoginError, selectLoginLoading } from "./usersSlice";
 import { googleLogin, login } from "./usersThunk";
 import { GoogleLogin } from "@react-oauth/google";
+import Preloader from "../../components/Preloader/Preloader";
 
 const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const error = useAppSelector(selectLoginError);
+  const loading = useAppSelector(selectLoginLoading);
 
   const [state, setState] = useState<LoginMutation>({
     email: "",
@@ -46,6 +48,7 @@ const Login = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+      {loading && <Preloader loading={loading} />}
       <Box
         style={{
           marginTop: 8,
@@ -96,7 +99,21 @@ const Login = () => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{
+              mr: "20px",
+              mt: 3,
+              mb: 2,
+              bgcolor: "#F86060",
+              color: "#fff",
+              "&:hover": {
+                bgcolor: "#fff",
+                color: "#000",
+              },
+              "&:active": {
+                bgcolor: "#000",
+                color: "#fff",
+              },
+            }}
           >
             Sign In
           </Button>

@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { Button, Grid, TextField } from '@mui/material';
+import React, { useRef } from "react";
+import { Button, Grid, TextField } from "@mui/material";
 
 interface Props {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -9,7 +9,13 @@ interface Props {
   filename?: string;
 }
 
-const FileInput: React.FC<Props> = ({onChange, name, label, filename, onClear}) => {
+const FileInput: React.FC<Props> = ({
+  onChange,
+  name,
+  label,
+  filename,
+  onClear,
+}) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const activateInput = () => {
@@ -21,7 +27,7 @@ const FileInput: React.FC<Props> = ({onChange, name, label, filename, onClear}) 
   return (
     <>
       <input
-        style={{display: 'none'}}
+        style={{ display: "none" }}
         type="file"
         name={name}
         onChange={onChange}
@@ -32,16 +38,20 @@ const FileInput: React.FC<Props> = ({onChange, name, label, filename, onClear}) 
           <TextField
             disabled
             label={label}
-            value={filename || ''}
+            value={filename || ""}
             onClick={activateInput}
           />
         </Grid>
         <Grid item>
-          <Button variant="contained" onClick={activateInput}>Browse</Button>
+          <Button variant="contained" onClick={activateInput}>
+            Browse
+          </Button>
         </Grid>
         {onClear && (
           <Grid item>
-            <Button variant="contained" onClick={onClear}>Clear</Button>
+            <Button variant="contained" onClick={onClear}>
+              Clear
+            </Button>
           </Grid>
         )}
       </Grid>

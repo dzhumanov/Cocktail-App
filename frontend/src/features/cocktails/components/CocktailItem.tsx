@@ -1,4 +1,4 @@
-import { Box, Card, CardMedia, Grid, Typography, styled } from "@mui/material";
+import { Box, CardMedia, Grid, Typography, styled } from "@mui/material";
 import { Cocktail } from "../../../types";
 import { apiURL } from "../../../constants";
 import { NavLink } from "react-router-dom";

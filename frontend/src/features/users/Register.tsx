@@ -13,13 +13,15 @@ import {
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { selectRegisterError } from "./usersSlice";
+import { selectRegisterError, selectRegisterLoading } from "./usersSlice";
 import { register } from "./usersThunk";
 import FileInput from "../../components/FileInput/FileInput";
+import Preloader from "../../components/Preloader/Preloader";
 
 const Register = () => {
   const dispatch = useAppDispatch();
   const error = useAppSelector(selectRegisterError);
+  const loading = useAppSelector(selectRegisterLoading);
   const navigate = useNavigate();
 
   const [state, setState] = useState<RegisterMutation>({
@@ -67,6 +69,7 @@ const Register = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+      {loading && <Preloader loading={loading} />}
       <Box
         sx={{
           marginTop: 8,
@@ -129,7 +132,21 @@ const Register = () => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{
+              mr: "20px",
+              mt: 3,
+              mb: 2,
+              bgcolor: "#F86060",
+              color: "#fff",
+              "&:hover": {
+                bgcolor: "#fff",
+                color: "#000",
+              },
+              "&:active": {
+                bgcolor: "#000",
+                color: "#fff",
+              },
+            }}
           >
             Sign Up
           </Button>

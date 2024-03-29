@@ -82,20 +82,21 @@ export const toggleCocktail = createAsyncThunk<
   }
 });
 
-export const deleteCocktail = createAsyncThunk<void, string, { state: RootState }>(
-  "cocktails/delete",
-  async (cocktailId: string, thunkApi) => {
-    try {
-      const state = thunkApi.getState();
-      const token = state.users.user?.token;
+export const deleteCocktail = createAsyncThunk<
+  void,
+  string,
+  { state: RootState }
+>("cocktails/delete", async (cocktailId: string, thunkApi) => {
+  try {
+    const state = thunkApi.getState();
+    const token = state.users.user?.token;
 
-      if (token) {
-        await axiosApi.delete(`/cocktails/${cocktailId}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-      }
-    } catch (e) {
-      console.error(e);
+    if (token) {
+      await axiosApi.delete(`/cocktails/${cocktailId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
     }
+  } catch (e) {
+    console.error(e);
   }
-);
+});

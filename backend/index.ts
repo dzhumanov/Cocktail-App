@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/users", userRouter);
-app.use('/cocktails', cocktailsRouter)
+app.use("/cocktails", cocktailsRouter);
 
 const run = async () => {
   await mongoose.connect(config.mongoose.db);
